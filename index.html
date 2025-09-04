@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK VIP PREMIUM SERVICE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --header-bg: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --footer-bg: #343a40;
+            --footer-text: #f8f9fa;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        .dark-mode {
+            --primary-color: #8c42fc;
+            --secondary-color: #4d8dfc;
+            --text-color: #f8f9fa;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --header-bg: linear-gradient(135deg, #1a0638 0%, #0a2a61 100%);
+            --footer-bg: #1a1a1a;
+            --footer-text: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--header-bg);
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        .clock-container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+        
+        #digital-clock {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Download Section */
+        .download-section {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-size: 32px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .download-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .download-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            width: 280px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .download-card i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .download-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+        
+        .download-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        
+        /* VIP Plans */
+        .plans-section {
+            padding: 40px 0;
+            background: rgba(106, 17, 203, 0.05);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .plan-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            width: 300px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .plan-card.popular::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 30px;
+            font-size: 12px;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+        
+        .plan-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .plan-price {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .plan-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .plan-features li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        /* Server Status */
+        .server-status {
+            padding: 40px 0;
+        }
+        
+        .status-container {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        
+        .server-name {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4caf50;
+        }
+        
+        .status-indicator.offline {
+            background: #f44336;
+        }
+        
+        .status-indicator.loading {
+            background: #ff9800;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        /* How to Use */
+        .tutorial-section {
+            padding: 40px 0;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Plan Codes */
+        .plan-codes {
+            padding: 40px 0;
+        }
+        
+        .codes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .code-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .code-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .code-card i {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .code-card h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .code-value {
+            background: rgba(106, 17, 203, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            word-break: break-all;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+        
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-toggle {
+            background: var(--primary-color);
+        }
+        
+        .messenger {
+            background: #006aff;
+        }
+        
+        .telegram {
+            background: #0088cc;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                JK VIP PREMIUM
+            </div>
+            <div class="clock-container">
+                <div id="digital-clock">Loading Thai time...</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Premium VIP Service Experience</h1>
+            <p>Get access to exclusive features with our premium VIP plans. High-quality service with 24/7 support and guaranteed uptime.</p>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <h2 class="section-title">Download Our App</h2>
+            <div class="download-cards">
+                <div class="download-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Latest Version</h3>
+                    <p>Version 2.5.1 (45MB)</p>
+                    <a href="#" class="download-btn">Download APK</a>
+                </div>
+                <div class="download-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Previous Version</h3>
+                    <p>Version 2.4.0 (42MB)</p>
+                    <a href="#" class="download-btn">Download APK</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP Plans Section -->
+    <section class="plans-section">
+        <div class="container">
+            <h2 class="section-title">VIP Plans</h2>
+            <div class="plans-container">
+                <div class="plan-card">
+                    <h3>Basic Plan</h3>
+                    <div class="plan-price">$9.99/month</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> HD Streaming</li>
+                        <li><i class="fas fa-check"></i> 1 Device</li>
+                        <li><i class="fas fa-check"></i> Basic Support</li>
+                        <li><i class="fas fa-check"></i> 100+ Channels</li>
+                        <li><i class="fas fa-check"></i> 720p Quality</li>
+                    </ul>
+                    <a href="#" class="download-btn">Get Started</a>
+                </div>
+                
+                <div class="plan-card popular">
+                    <h3>Premium Plan</h3>
+                    <div class="plan-price">$19.99/month</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Full HD Streaming</li>
+                        <li><i class="fas fa-check"></i> 3 Devices</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> 500+ Channels</li>
+                        <li><i class="fas fa-check"></i> 1080p Quality</li>
+                    </ul>
+                    <a href="#" class="download-btn">Get Started</a>
+                </div>
+                
+                <div class="plan-card">
+                    <h3>Ultimate Plan</h3>
+                    <div class="plan-price">$29.99/month</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 4K Streaming</li>
+                        <li><i class="fas fa-check"></i> 5 Devices</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> 1000+ Channels</li>
+                        <li><i class="fas fa-check"></i> 4K & HDR Quality</li>
+                    </ul>
+                    <a href="#" class="download-btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Server Status Section -->
+    <section class="server-status">
+        <div class="container">
+            <h2 class="section-title">Server Status</h2>
+            <div class="status-container">
+                <div class="status-item">
+                    <div class="server-name">
+                        <div class="status-indicator"></div>
+                        <span>Main Server</span>
+                    </div>
+                    <div class="status">Online</div>
+                </div>
+                <div class="status-item">
+                    <div class="server-name">
+                        <div class="status-indicator"></div>
+                        <span>Backup Server</span>
+                    </div>
+                    <div class="status">Online</div>
+                </div>
+                <div class="status-item">
+                    <div class="server-name">
+                        <div class="status-indicator loading"></div>
+                        <span>Update Server</span>
+                    </div>
+                    <div class="status">Updating</div>
+                </div>
+                <div class="status-item">
+                    <div class="server-name">
+                        <div class="status-indicator offline"></div>
+                        <span>Testing Server</span>
+                    </div>
+                    <div class="status">Offline</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use Section -->
+    <section class="tutorial-section">
+        <div class="container">
+            <h2 class="section-title">How to Use</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube tutorial video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plan Codes Section -->
+    <section class="plan-codes">
+        <div class="container">
+            <h2 class="section-title">Plan Codes</h2>
+            <div class="codes-grid">
+                <div class="code-card">
+                    <i class="fas fa-gift"></i>
+                    <h3>Basic Plan Code</h3>
+                    <div class="code-value">JK-BASIC-2023</div>
+                </div>
+                <div class="code-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Premium Plan Code</h3>
+                    <div class="code-value">JK-PREMIUM-2023</div>
+                </div>
+                <div class="code-card">
+                    <i class="fas fa-diamond"></i>
+                    <h3>Ultimate Plan Code</h3>
+                    <div class="code-value">JK-ULTIMATE-2023</div>
+                </div>
+                <div class="code-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Trial Code</h3>
+                    <div class="code-value">JK-TRIAL-24H</div>
+                </div>
+                <div class="code-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Special Offer Code</h3>
+                    <div class="code-value">JK-SPECIAL-50</div>
+                </div>
+                <div class="code-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>VIP Code</h3>
+                    <div class="code-value">JK-VIP-ACCESS</div>
+                </div>
+                <div class="code-card">
+                    <i class="fas fa-crown"></i>
+                    <h3>Premium Code</h3>
+                    <div class="code-value">JK-PREMIUM-VIP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">JK VIP PREMIUM SERVICE</div>
+            <p>Premium streaming service for all your entertainment needs</p>
+            <div class="copyright">
+                &copy; 2023 JK VIP PREMIUM SERVICE. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <div class="floating-btn theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </div>
+        <a href="#" class="floating-btn messenger">
+            <i class="fab fa-facebook-messenger"></i>
+        </a>
+        <a href="#" class="floating-btn telegram">
+            <i class="fab fa-telegram"></i>
+        </a>
+    </div>
+
+    <script>
+        // Thai Digital Clock
+        function updateThaiClock() {
+            const now = new Date();
+            const options = { 
+                timeZone: 'Asia/Bangkok',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'long',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            
+            const thaiDate = now.toLocaleDateString('th-TH', options);
+            document.getElementById('digital-clock').textContent = thaiDate;
+        }
+        
+        // Update clock immediately and then every second
+        updateThaiClock();
+        setInterval(updateThaiClock, 1000);
+        
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // Simulate real-time server status updates
+        function updateServerStatus() {
+            const indicators = document.querySelectorAll('.status-indicator');
+            const statusTexts = document.querySelectorAll('.status');
+            
+            // Randomly change status for demonstration
+            indicators.forEach((indicator, index) => {
+                if (index < 2) return; // Skip first two servers (always online)
+                
+                const random = Math.random();
+                if (random < 0.7) {
+                    indicator.className = 'status-indicator';
+                    statusTexts[index].textContent = 'Online';
+                } else if (random < 0.85) {
+                    indicator.className = 'status-indicator loading';
+                    statusTexts[index].textContent = 'Updating';
+                } else {
+                    indicator.className = 'status-indicator offline';
+                    statusTexts[index].textContent = 'Offline';
+                }
+            });
+        }
+        
+        // Update server status every 10 seconds for demo
+        setInterval(updateServerStatus, 10000);
+    </script>
+</body>
+</html>
